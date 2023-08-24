@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CCT"
+        tools:targetApi="31">
+        <service
+            android:name=".ForgroundSocketService"
+            android:enabled="true"
+            android:exported="true"></service>
+        <activity
+            android:name=".SocketActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CCT.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".DemoListActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="linktofile"
+                    android:scheme="cctapp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EngagementSignalsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_engagement_signals">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".NotificationParentActivity"
+            android:label="@string/title_activity_notification_parent"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".WebviewActivity"
+            android:label="@string/title_activity_webview"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".SimpleCustomTabActivity"
+            android:label="@string/title_activity_simple_chrome_tab"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".PartialCustomTabActivity"
+            android:label="@string/title_activity_partial_custom_tab"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".CustomUIActivity"
+            android:label="@string/title_activity_customized_chrome_tab"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+        <activity
+            android:name=".ServiceConnectionActivity"
+            android:label="@string/title_activity_service_connection"
+            android:parentActivityName=".DemoListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".DemoListActivity" />
+        </activity>
+
+        <receiver android:name=".ActionBroadcastReceiver" />
+    </application>
+
+    <queries>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService" />
+        </intent>
+    </queries>
+
+</manifest>
